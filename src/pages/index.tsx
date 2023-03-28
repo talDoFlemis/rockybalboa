@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { DynaPuff } from "next/font/google"
 import Herobalboa from '../components/Herobalboa'
 import Form from '../components/Form'
+import Resultados from '../components/Resultados'
 
 const dyna = DynaPuff({
   subsets: ['latin'],
@@ -21,6 +22,7 @@ export default function Home() {
       <main className={`${dyna.variable} bg-background min-h-screen`}>
         <Herobalboa />
         <Form />
+        <Resultados />
       </main>
     </>
   )
