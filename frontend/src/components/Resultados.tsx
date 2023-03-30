@@ -2,12 +2,20 @@ import React, { useEffect, useState } from 'react'
 
 interface ItemProps {
     name: string;
+    number: number;
     email: number;
+    address: string;
 }
 
-const Item = ({ name, email }: ItemProps) => {
+const Item = ({ name, email, number, address }: ItemProps) => {
     return (
-        <li className='text-3xl font-sans text-cyan-300'>{name}</li>
+        <li className="flex gap-8 flex-wrap">
+            <div className="text-3xl bg-gradient-to-r from-cyan-500 via-white to-pink-500 text-orange-700">{name}</div>
+            <div className="text-3xl bg-gradient-to-r from-cyan-500 via-white to-pink-500 text-orange-700">{number}</div>
+            <div className='bg-slate-400 font-sans text-3xl underline decoration-white text-white '>{email}</div>
+            <div className='bg-gradient-to-r from-orange-200 to-orange-50 font-sans text-3xl text-black '>{address}</div>
+        </li>
+
     )
 }
 
@@ -16,7 +24,7 @@ const Resultados = () => {
 
     const fetchUsers = async () => {
         try {
-            const resp = await fetch("https://jsonplaceholder.typicode.com/users")
+            const resp = await fetch("http://localhost:4000/dados")
             const data = await resp.json()
             setUsers(data)
         } catch (error) {
@@ -37,8 +45,10 @@ const Resultados = () => {
                         key={chaves.name}
                         name={chaves.name}
                         email={chaves.email}
+                        number={chaves.number}
+                        address={chaves.address}
                     />
-                ))) : (<p>asdfasdf</p>)}
+                ))) : (<p>Nenhum fera foi encontrado</p>)}
             </ul>
         </section>
 

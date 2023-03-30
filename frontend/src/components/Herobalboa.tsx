@@ -3,7 +3,7 @@ import Image from "next/image"
 
 const Herobalboa = () => {
     return (
-        <section className="flex flex-col text-center h-screen justify-center items-center container gap-8">
+        <section className="flex flex-col text-center h-screen justify-center items-center container gap-8 mx-auto">
             <h1 className="text-7xl text-white font-dyna">
                 Rocky Balboa
             </h1>
