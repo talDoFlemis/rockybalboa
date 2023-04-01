@@ -4,13 +4,25 @@ const Form = () => {
   const [data, setData] = useState({
     name: "",
     email: "",
-    phone: "",
+    number: "",
     address: "",
   });
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(data);
+
+    try {
+      const resp = await fetch("http://localhost:4000/criar", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+      console.log(resp)
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   return (
@@ -37,7 +49,7 @@ const Form = () => {
           type="tel"
           placeholder="Numero de telefone"
           className="form-input"
-          onChange={(e) => setData({ ...data, phone: e.target.value })}
+          onChange={(e) => setData({ ...data, number: e.target.value })}
         />
         <input
           type="text"

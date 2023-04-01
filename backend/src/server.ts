@@ -21,16 +21,17 @@ app.get("/dados", (req: Request, res: Response) => {
 
 app.post("/criar", (req: Request, res: Response) => {
   const body = req.body
-  const nome = body?.nome
-  const idade = body?.idade
+
+  const name = body?.name
+  const address = body?.address
   const email = body?.email
   const number = body?.number
 
-  if (!nome || !idade || !email || !number) {
+  if (!name || !address || !email || !number) {
     res.status(400).send("Dados inválidos")
   }
 
-  res.status(201).send(`Meu nome é ${nome} e tenho ${idade} anos e meu email é ${email} e meu número é ${number}`);
+  res.status(201).send(`Meu nome é ${name} e tenho ${address} anos e meu email é ${email} e meu número é ${number}`);
 });
 
 
